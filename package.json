@@ -16,6 +16,7 @@
     "utils": "build/executables/utilities.js"
   },
   "dependencies": {
+    "commander": "2.9.0",
     "jstimezonedetect": "1.0.6",
     "moment-timezone": "0.5.4"
   },
