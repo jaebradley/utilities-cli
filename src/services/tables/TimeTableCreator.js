@@ -13,7 +13,7 @@ export default class TimeTableCreator {
 
     let table = new Table();
     table.push(TimeTableCreator.buildRow(formattedDateTime).toJS());
-    return table;
+    return table.toString();
   }
 
   static buildRow(formattedDateTime) {

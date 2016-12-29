@@ -6,6 +6,7 @@ import moment from 'moment-timezone';
 import FormattedDateTime from '../data/FormattedDateTime';
 import TimeUnit from '../data/TimeUnit';
 import UnixTimestampService from './UnixTimestampService';
+import TimeTableCreator from './tables/TimeTableCreator';
 
 export default class UtilitiesExecutionService {
   static executeTimestampUtilityCommand(unit) {
@@ -20,6 +21,6 @@ export default class UtilitiesExecutionService {
 
     copy(dateTime.getFormattedTimestamp());
 
-
+    return TimeTableCreator.createTimestampTable(dateTime);
   }
 }
