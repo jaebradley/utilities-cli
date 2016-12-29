@@ -2,12 +2,12 @@
 
 import copy from 'copy-to-clipboard';
 
-import TimestampUnit from '../data/TimestampUnit';
+import TimeUnit from '../data/TimeUnit';
 import UnixTimestampService from './UnixTimestampService';
 
 export default class UtilitiesExecutionService {
   static fetchTimestamp(unit) {
-    if !(unit isinstanceof TimestampUnit) {
+    if !(unit isinstanceof TimeUnit) {
       throw new TypeError('Expected a timestamp unit');
     }
 
@@ -18,7 +18,7 @@ export default class UtilitiesExecutionService {
   }
 
   static calculateValue(timestamp, unit) {
-    if !(unit isinstanceof TimestampUnit) {
+    if !(unit isinstanceof TimeUnit) {
       throw new TypeError('Expected a timestamp unit');
     }
 
