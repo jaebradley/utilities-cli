@@ -1,33 +1,25 @@
 'use es6';
 
 import copy from 'copy-to-clipboard';
+import moment from 'moment-timezone';
 
+import FormattedDateTime from '../data/FormattedDateTime';
 import TimeUnit from '../data/TimeUnit';
 import UnixTimestampService from './UnixTimestampService';
 
 export default class UtilitiesExecutionService {
-  static fetchTimestamp(unit) {
+  static executeTimestampUtilityCommand(unit) {
     if !(unit isinstanceof TimeUnit) {
       throw new TypeError('Expected a timestamp unit');
     }
 
-    let timestamp = UnixTimestampService.getCurrentTimestamp();
-    let value = UtilitiesExecutionService.calculateValue(timestamp, unit);
+    let dateTime = new FormattedDateTime({
+      instant: moment(),
+      unit: unit
+    });
 
-    copy(value);
-  }
+    copy(dateTime.getFormattedTimestamp());
 
-  static calculateValue(timestamp, unit) {
-    if !(unit isinstanceof TimeUnit) {
-      throw new TypeError('Expected a timestamp unit');
-    }
 
-    if !(Number.isInteger(timestamp)) {
-      throw new TypeError('Expected an integer');
-    }
-
-    return unit == TimestampUnit.MILLISECOND
-      ? timestamp
-      : timestamp / 1000;
   }
 }
