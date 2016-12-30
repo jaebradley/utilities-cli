@@ -12,7 +12,7 @@ let defaults = {
 
 export default class FormattedDateTime extends Record(defaults){
   getFormattedTimestamp() {
-    return unit == TimeUnit.MILLISECOND
+    return this.unit == TimeUnit.MILLISECOND
       ? this.instant.valueOf()
       : this.instant.valueOf() / 1000;
   }
