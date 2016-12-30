@@ -10,7 +10,7 @@ import TimeTableCreator from './tables/TimeTableCreator';
 
 export default class UtilitiesExecutionService {
   static executeTimestampUtilityCommand(unit) {
-    if !(unit isinstanceof TimeUnit) {
+    if !(unit instanceof TimeUnit) {
       throw new TypeError('Expected a timestamp unit');
     }
 

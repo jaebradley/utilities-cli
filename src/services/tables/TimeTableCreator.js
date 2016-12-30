@@ -1,6 +1,6 @@
 'use es6';
 
-import jstztimezone from 'jstztimezone';
+import jstz from 'jstz';
 import {List} from 'immutable';
 import Table from 'cli-table2';
 import FormattedDateTime from '../../data/FormattedDateTime';
@@ -17,9 +17,10 @@ export default class TimeTableCreator {
   }
 
   static buildRow(formattedDateTime) {
+    let localTimezone = jstz.determine().name();
     return List.of(
       List.of('UTC', formattedDateTime.getFormattedUtcDateTime()),
-      List.of(jstztimezone.name(), formattedDateTime.getFormattedLocalDateTime(jstztimezone.name())),
+      List.of(localTimezone, formattedDateTime.getFormattedLocalDateTime(localTimezone)),
       List.of('Timestamp', formattedDateTime.getFormattedTimestamp()),
       List.of('Unit', formattedDateTime.unit.name.toLower())
     );
