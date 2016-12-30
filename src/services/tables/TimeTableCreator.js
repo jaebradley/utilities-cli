@@ -1,6 +1,6 @@
 'use es6';
 
-import jstz from 'jstz';
+import jstz from 'jstimezonedetect';
 import {List} from 'immutable';
 import Table from 'cli-table2';
 import FormattedDateTime from '../../data/FormattedDateTime';

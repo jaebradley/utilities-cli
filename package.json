@@ -13,7 +13,7 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "utils": "build/executables/utilities.js"
+    "utils": "build/executables/utils.js"
   },
   "dependencies": {
     "cli-table2": "0.2.0",
