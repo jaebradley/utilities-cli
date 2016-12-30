@@ -7,7 +7,7 @@ import FormattedDateTime from '../../data/FormattedDateTime';
 
 export default class TimeTableCreator {
   static createTimestampTable(formattedDateTime) {
-    if !(formattedDateTime instanceof FormattedDateTime) {
+    if (!(formattedDateTime instanceof FormattedDateTime)) {
       throw new TypeError('Expected a Formatted Date Time object');
     }
 
