@@ -1,6 +1,6 @@
 'use es6';
 
-import copy from 'copy-to-clipboard';
+import ncp from 'copy-paste';
 import moment from 'moment-timezone';
 
 import FormattedDateTime from '../data/FormattedDateTime';
@@ -14,18 +14,13 @@ export default class UtilitiesExecutionService {
       unit: unit
     });
 
-    copy(dateTime.getFormattedTimestamp());
+    let timestamp = dateTime.getFormattedTimestamp();
+    ncp.copy(timestamp, console.log(UtilitiesExecutionService.createMessage(timestamp)));
 
     return TimeTableCreator.createTimestampTable(dateTime);
   }
 
-  static identifyUnit(unit) {
-    for (let timeUnit of TimeUnit.enumValues) {
-      if (timeUnit.name === unit.toUpperCase()) {
-        return timeUnit;
-      }
-    }
-
-    throw new TypeError('Unable to identify Time Unit');
+  static createMessage(value) {
+    return `Copied ${value} to clipboard`;
   }
 }

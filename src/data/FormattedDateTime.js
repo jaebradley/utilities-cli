@@ -14,20 +14,22 @@ export default class FormattedDateTime extends Record(defaults){
   getFormattedTimestamp() {
     return this.unit == TimeUnit.MILLISECOND
       ? this.instant.valueOf()
-      : this.instant.valueOf() / 1000;
+      : Math.round(this.instant.valueOf() / 1000);
   }
 
   getFormattedUtcDateTime() {
-    return moment.clone(this.instant)
-                 .tz('UTC')
-                 .format(this.unit.format)
-                 .toString();
+    return this.instant
+               .clone()
+               .tz('UTC')
+               .format(this.unit.format)
+               .toString();
   }
 
   getFormattedLocalDateTime(timezone) {
-    return moment.clone(this.instant)
-                 .tz(timezone)
-                 .format(this.unit.format)
-                 .toString();
+    return this.instant
+               .clone()
+               .tz(timezone)
+               .format(this.unit.format)
+               .toString();
   }
 }

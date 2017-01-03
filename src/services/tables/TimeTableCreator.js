@@ -12,17 +12,11 @@ export default class TimeTableCreator {
     }
 
     let table = new Table();
-    table.push(TimeTableCreator.buildRow(formattedDateTime).toJS());
-    return table.toString();
-  }
-
-  static buildRow(formattedDateTime) {
     let localTimezone = jstz.determine().name();
-    return List.of(
-      List.of('UTC', formattedDateTime.getFormattedUtcDateTime()),
-      List.of(localTimezone, formattedDateTime.getFormattedLocalDateTime(localTimezone)),
-      List.of('Timestamp', formattedDateTime.getFormattedTimestamp()),
-      List.of('Unit', formattedDateTime.unit.name.toLower())
-    );
+    table.push(['UTC', formattedDateTime.getFormattedUtcDateTime()]);
+    table.push([localTimezone, formattedDateTime.getFormattedLocalDateTime(localTimezone)])
+    table.push(['Timestamp', formattedDateTime.getFormattedTimestamp()]);
+    table.push(['Unit', formattedDateTime.unit.name.toLowerCase()]);
+    return table.toString();
   }
 }
