@@ -1,4 +1,7 @@
-# utilities-cli
+# Utilities CLI
+
+### Install
+`npm install utilities-cli -g`
 
 ### Timestamp
 
