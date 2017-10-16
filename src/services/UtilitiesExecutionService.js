@@ -20,8 +20,18 @@ export default class UtilitiesExecutionService {
 
     return TimeTableCreator.createTimestampTable(dateTime);
   }
-  static executeUriDecodeCommand(uri) {
-    return DecodedUriTableCreator.create(uri);
+  static executeUriDecodeCommand(uri, copyToClipboard) {
+    try {
+      const decodedValue = decodeURIComponent(uri);
+
+      if (copyToClipboard) {
+        ncp.copy(decodedValue, console.log(UtilitiesExecutionService.createMessage(decodedValue)));
+      }
+
+      console.log(DecodedUriTableCreator.create(decodedValue));
+    } catch (e) {
+      console.error('Could not decode URI');
+    }
   }
 
   static createMessage(value) {
