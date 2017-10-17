@@ -10,16 +10,19 @@ import DecodedUriTableCreator from './tables/DecodedUriTableCreator';
 import EncodedUriTableCreator from './tables/EncodedUriTableCreator';
 
 export default class UtilitiesExecutionService {
-  static executeTimestampUtilityCommand(unit) {
-    let dateTime = new FormattedDateTime({
+  static executeTimestampUtilityCommand(unit, copyToClipboard) {
+    const dateTime = new FormattedDateTime({
       instant: moment(),
       unit: unit
     });
 
-    let timestamp = dateTime.getFormattedTimestamp();
-    ncp.copy(timestamp, console.log(UtilitiesExecutionService.createMessage(timestamp)));
+    const timestamp = dateTime.getFormattedTimestamp();
 
-    return TimeTableCreator.createTimestampTable(dateTime);
+    if (copyToClipboard) {
+      ncp.copy(timestamp, console.log(UtilitiesExecutionService.createMessage(timestamp)));
+    }
+
+    console.log(TimeTableCreator.createTimestampTable(dateTime));
   }
   static executeUriDecodeCommand(uri, copyToClipboard) {
     try {
