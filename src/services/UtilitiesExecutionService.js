@@ -7,6 +7,7 @@ import FormattedDateTime from '../data/FormattedDateTime';
 import TimeUnit from '../data/TimeUnit';
 import TimeTableCreator from './tables/TimeTableCreator';
 import DecodedUriTableCreator from './tables/DecodedUriTableCreator';
+import EncodedUriTableCreator from './tables/EncodedUriTableCreator';
 
 export default class UtilitiesExecutionService {
   static executeTimestampUtilityCommand(unit) {
@@ -31,6 +32,20 @@ export default class UtilitiesExecutionService {
       console.log(DecodedUriTableCreator.create(decodedValue));
     } catch (e) {
       console.error('Could not decode URI');
+    }
+  }
+
+  static executeUriEncodeCommand(uri, copyToClipboard) {
+    try {
+      const encodedValue = encodeURIComponent(uri);
+
+      if (copyToClipboard) {
+        ncp.copy(encodedValue, console.log(UtilitiesExecutionService.createMessage(encodedValue)));
+      }
+
+      console.log(EncodedUriTableCreator.create(encodedValue));
+    } catch (e) {
+      console.error('Could not encode URI');
     }
   }
 
