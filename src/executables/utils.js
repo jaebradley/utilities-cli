@@ -7,4 +7,5 @@ import program from 'commander';
 program.version('0.0.1')
        .command('timestamp', 'get unix timestamp')
        .command('uridecode', 'decode uri')
+       .command('uriencode', 'encode URI')
        .parse(process.argv);
