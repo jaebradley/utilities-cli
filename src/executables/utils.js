@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-'use es6';
-
 import program from 'commander';
 
-program.version('0.0.1')
-       .command('timestamp', 'get unix timestamp')
-       .command('uridecode', 'decode uri')
-       .command('uriencode', 'encode URI')
+import pkg from '../../package.json';
+
+program.version(pkg.version)
+       .command('timestamp', 'Get UNIX Timestamp')
+       .command('uridecode', 'Decode URI')
+       .command('uriencode', 'Encode URI')
        .parse(process.argv);
