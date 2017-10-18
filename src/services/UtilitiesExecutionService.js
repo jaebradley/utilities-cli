@@ -10,7 +10,7 @@ import DecodedUriTableCreator from './tables/DecodedUriTableCreator';
 import EncodedUriTableCreator from './tables/EncodedUriTableCreator';
 
 export default class UtilitiesExecutionService {
-  static executeTimestampUtilityCommand(unit, copyToClipboard) {
+  static executeTimestampCommand(unit, copyToClipboard) {
     const dateTime = new FormattedDateTime({
       instant: moment(),
       unit: unit

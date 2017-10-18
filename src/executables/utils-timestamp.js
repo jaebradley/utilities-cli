@@ -16,7 +16,7 @@ const unit = !!program.millisecond
 const copyToClipboard = !!program.copyToClipboard;
 
  try {
-   UtilitiesExecutionService.executeTimestampUtilityCommand(unit, copyToClipboard);
+   UtilitiesExecutionService.executeTimestampCommand(unit, copyToClipboard);
  } catch (Error) {
    console.error('Could not get timestamp');
  }
