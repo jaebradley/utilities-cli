@@ -1,5 +1,3 @@
-'use es6';
-
 import ncp from 'copy-paste';
 import moment from 'moment-timezone';
 

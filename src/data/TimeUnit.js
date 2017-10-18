@@ -1,14 +1,12 @@
-'use es6';
-
 import {Enum} from 'enumify';
 
 export default class TimeUnit extends Enum {};
 
 TimeUnit.initEnum({
   SECOND: {
-    format: 'ddd., MMM. do, YYYY h:m:s A Z'
+    format: 'ddd., MMM. do, YYYY hh:mm:ss A Z'
   },
   MILLISECOND: {
-    format: 'ddd., MMM. do, YYYY h:m:s.SS A Z'
+    format: 'ddd., MMM. do, YYYY hh:mm:ss.SS A Z'
   }
 });
