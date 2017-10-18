@@ -6,6 +6,7 @@ import TimeUnit from '../data/TimeUnit';
 import TimeTableCreator from './tables/TimeTableCreator';
 import DecodedUriTableCreator from './tables/DecodedUriTableCreator';
 import EncodedUriTableCreator from './tables/EncodedUriTableCreator';
+import SingleValueTableCreator from './tables/SingleValueTableCreator';
 
 export default class UtilitiesExecutionService {
   static executeTimestampCommand(unit, copyToClipboard) {
@@ -17,7 +18,7 @@ export default class UtilitiesExecutionService {
     const timestamp = dateTime.getFormattedTimestamp();
 
     if (copyToClipboard) {
-      ncp.copy(timestamp, console.log(UtilitiesExecutionService.createMessage(timestamp)));
+      ncp.copy(timestamp, console.log(UtilitiesExecutionService.createCopyToClipboardMessage(timestamp)));
     }
 
     console.log(TimeTableCreator.createTimestampTable(dateTime));
@@ -27,10 +28,10 @@ export default class UtilitiesExecutionService {
       const decodedValue = decodeURIComponent(uri);
 
       if (copyToClipboard) {
-        ncp.copy(decodedValue, console.log(UtilitiesExecutionService.createMessage(decodedValue)));
+        ncp.copy(decodedValue, console.log(UtilitiesExecutionService.createCopyToClipboardMessage(decodedValue)));
       }
 
-      console.log(DecodedUriTableCreator.create(decodedValue));
+      console.log(SingleValueTableCreator.create('Decoded Value', decodedValue));
     } catch (e) {
       console.error('Could not decode URI');
     }
@@ -41,16 +42,16 @@ export default class UtilitiesExecutionService {
       const encodedValue = encodeURIComponent(uri);
 
       if (copyToClipboard) {
-        ncp.copy(encodedValue, console.log(UtilitiesExecutionService.createMessage(encodedValue)));
+        ncp.copy(encodedValue, console.log(UtilitiesExecutionService.createCopyToClipboardMessage(encodedValue)));
       }
 
-      console.log(EncodedUriTableCreator.create(encodedValue));
+      console.log(SingleValueTableCreator.create('Encoded Value', encodedValue));
     } catch (e) {
       console.error('Could not encode URI');
     }
   }
 
-  static createMessage(value) {
+  static createCopyToClipboardMessage(value) {
     return `Copied ${value} to clipboard`;
   }
 }
