@@ -1,21 +1,22 @@
 #!/usr/bin/env node
 
-'use es6';
-
 import program from 'commander';
 
 import TimeUnit from '../data/TimeUnit';
 import UtilitiesExecutionService from '../services/UtilitiesExecutionService';
 
 program.option('-m, --millisecond', 'Return value in milliseconds')
+       .option('-c, --copyToClipboard', 'Copy value to clipboard')
        .parse(process.argv);
 
-let unit = program.millisecond === true
+const unit = !!program.millisecond
    ? TimeUnit.MILLISECOND
    : TimeUnit.SECOND;
 
+const copyToClipboard = !!program.copyToClipboard;
+
  try {
-   console.log(UtilitiesExecutionService.executeTimestampUtilityCommand(unit));
+   UtilitiesExecutionService.executeTimestampCommand(unit, copyToClipboard);
  } catch (Error) {
    console.error('Could not get timestamp');
  }

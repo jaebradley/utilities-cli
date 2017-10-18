@@ -1,11 +1,9 @@
-'use es6';
-
 import chai from 'chai';
 
 import moment from 'moment-timezone';
 
-import FormattedDateTime from '../src/data/FormattedDateTime';
-import TimeUnit from '../src/data/TimeUnit';
+import FormattedDateTime from '../../src/data/FormattedDateTime';
+import TimeUnit from '../../src/data/TimeUnit';
 
 let expect = chai.expect;
 
