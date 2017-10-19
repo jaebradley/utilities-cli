@@ -5,23 +5,27 @@ import moment from 'moment-timezone';
 import FormattedDateTime from '../../src/data/FormattedDateTime';
 import TimeUnit from '../../src/data/TimeUnit';
 
-let expect = chai.expect;
+const { expect } = chai;
 
-describe('Test Formatted Date Time Test', function() {
-  let instant = moment().year(2016).month(1).date(2).startOf('day');
-  let secondDateTime = new FormattedDateTime({
-    instant: instant,
-    unit: TimeUnit.SECOND
+describe('Test Formatted Date Time Test', () => {
+  const instant = moment()
+    .year(2016)
+    .month(1)
+    .date(2)
+    .startOf('day');
+  const secondDateTime = new FormattedDateTime({
+    unit: TimeUnit.SECOND,
+    instant,
   });
-  let millisecondDateTime = new FormattedDateTime({
-    instant: instant,
-    unit: TimeUnit.MILLISECOND
+  const millisecondDateTime = new FormattedDateTime({
+    unit: TimeUnit.MILLISECOND,
+    instant,
   });
-  it('should return formatted timestamp', function() {
-    let secondFormattedTimestamp = instant.valueOf() / 1000;
+  it('should return formatted timestamp', () => {
+    const secondFormattedTimestamp = instant.valueOf() / 1000;
     expect(secondDateTime.getFormattedTimestamp()).to.equal(secondFormattedTimestamp);
 
-    let millisecondFormattedTimestamp = instant.valueOf();
+    const millisecondFormattedTimestamp = instant.valueOf();
     expect(millisecondDateTime.getFormattedTimestamp()).to.equal(millisecondFormattedTimestamp);
   });
 });
