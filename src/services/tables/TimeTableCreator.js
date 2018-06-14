@@ -1,4 +1,4 @@
-import Table from 'cli-table2';
+import Table from 'cli-table3';
 import jstz from 'jstimezonedetect';
 
 export default class TimeTableCreator {
